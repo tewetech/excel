@@ -1,0 +1,412 @@
+
+<!DOCTYPE html>
+<html lang="id" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Prompt Excel</title>
+  <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/tewetech/favicon/refs/heads/main/tewe.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            tech: {
+              300: '#67e8f9',
+              400: '#22d3ee',
+              500: '#06b6d4',
+              600: '#0891b2',
+              700: '#0e7490',
+              800: '#155e75'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    :root {
+      color-scheme: dark;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scrollbar-width: thin;
+      scrollbar-color: #155e75 #09090b;
+    }
+
+    body {
+      overflow-x: hidden;
+    }
+
+    * {
+      scrollbar-width: thin;
+      scrollbar-color: #155e75 #09090b;
+    }
+
+    ::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #09090b;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #155e75;
+      border-radius: 999px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #0891b2;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    button,
+    textarea {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .tech-grid {
+      background-image:
+        linear-gradient(rgba(34, 211, 238, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(34, 211, 238, 0.035) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+
+    .tech-glow {
+      background:
+        radial-gradient(circle at 50% -10%, rgba(6, 182, 212, 0.11), transparent 36%),
+        radial-gradient(circle at 90% 70%, rgba(14, 116, 144, 0.07), transparent 28%);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      ::before,
+      ::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="min-h-dvh bg-[#07090d] text-zinc-100 antialiased selection:bg-cyan-500 selection:text-black flex flex-col justify-between tech-grid">
+  <div class="fixed inset-0 pointer-events-none tech-glow"></div>
+
+  <div class="relative z-10 w-full max-w-7xl mx-auto px-4 py-5 sm:px-6 sm:py-7 lg:px-8 flex-1 flex flex-col">
+
+    <header class="mb-6 sm:mb-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-zinc-800/80 pb-5">
+      <div>
+        <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-medium mb-2">
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m18 16 4-4-4-4"/>
+            <path d="m6 8-4 4 4 4"/>
+            <path d="m14.5 4-5 16"/>
+          </svg>
+          FORMAT DATA AI
+        </div>
+
+        <h1 class="text-2xl sm:text-3xl font-bold tracking-tight text-white">
+          Prompt Excel Kartu Osis Pak Djum
+        </h1>
+
+        <p class="text-sm text-zinc-400 mt-1">
+          Buat dan salin prompt standarisasi data dalam satu kali klik
+        </p>
+      </div>
+
+      <div class="flex items-center justify-center sm:justify-end gap-2 text-xs text-zinc-500">
+        <span class="inline-block w-2 h-2 rounded-full bg-cyan-400"></span>
+        Sistem Siap Digunakan
+      </div>
+    </header>
+
+    <main class="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-5 flex-1 items-start">
+
+      <section class="bg-[#0d1117]/95 border border-zinc-800/90 rounded-2xl p-4 sm:p-5 flex flex-col gap-4 shadow-[0_8px_30px_rgba(0,0,0,0.16)]">
+        <div class="flex items-center justify-between gap-3 border-b border-zinc-800/80 pb-3">
+          <div class="flex items-center gap-2.5 min-w-0">
+            <span class="flex items-center justify-center w-7 h-7 shrink-0 rounded-lg bg-cyan-500/10 text-cyan-400 font-semibold text-xs border border-cyan-500/20">01</span>
+            <h2 class="text-lg font-semibold text-white tracking-wide">NAMA</h2>
+          </div>
+
+          <div class="flex items-center gap-2 shrink-0">
+            <span class="text-xs px-2 py-0.5 rounded bg-zinc-800/80 text-zinc-400 font-mono">
+              UPPERCASE
+            </span>
+            <button type="button" data-reset-target="nama-input-data" class="reset-btn h-7 px-2.5 inline-flex items-center justify-center gap-1.5 rounded-lg border border-zinc-700 bg-zinc-800 text-zinc-400 hover:border-cyan-500/40 hover:text-cyan-400 active:scale-[0.98] transition-colors text-xs font-medium">
+              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 12a9 9 0 1 0 3-6.7"/>
+                <path d="M3 4v5h5"/>
+              </svg>
+              Reset
+            </button>
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-3">
+          <div>
+            <label for="nama-input-data" class="block text-xs font-medium text-zinc-400 mb-1.5">Input Data Nama</label>
+            <textarea id="nama-input-data" rows="6" class="w-full bg-[#080b10] border border-zinc-800 rounded-xl px-3 py-2.5 text-sm text-zinc-100 placeholder-zinc-600 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/30 transition-colors" placeholder="Tempel data nama di sini..."></textarea>
+          </div>
+        </div>
+
+        <div class="pt-2 mt-auto">
+          <button type="button" id="btn-copy-nama" class="w-full h-11 inline-flex items-center justify-center gap-2 rounded-xl bg-cyan-600 hover:bg-cyan-500 active:scale-[0.99] text-white text-sm font-medium transition-colors shadow-sm">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="14" height="14" x="8" y="8" rx="2"/>
+              <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+            </svg>
+            <span>Salin Prompt NAMA</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="bg-[#0d1117]/95 border border-zinc-800/90 rounded-2xl p-4 sm:p-5 flex flex-col gap-4 shadow-[0_8px_30px_rgba(0,0,0,0.16)]">
+        <div class="flex items-center justify-between gap-3 border-b border-zinc-800/80 pb-3">
+          <div class="flex items-center gap-2.5 min-w-0">
+            <span class="flex items-center justify-center w-7 h-7 shrink-0 rounded-lg bg-cyan-500/10 text-cyan-400 font-semibold text-xs border border-cyan-500/20">02</span>
+            <h2 class="text-lg font-semibold text-white tracking-wide">TTL</h2>
+          </div>
+
+          <div class="flex items-center gap-2 shrink-0">
+            <span class="text-xs px-2 py-0.5 rounded bg-zinc-800/80 text-zinc-400 font-mono">
+              Capitalise Case
+            </span>
+            <button type="button" data-reset-target="ttl-input-data" class="reset-btn h-7 px-2.5 inline-flex items-center justify-center gap-1.5 rounded-lg border border-zinc-700 bg-zinc-800 text-zinc-400 hover:border-cyan-500/40 hover:text-cyan-400 active:scale-[0.98] transition-colors text-xs font-medium">
+              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 12a9 9 0 1 0 3-6.7"/>
+                <path d="M3 4v5h5"/>
+              </svg>
+              Reset
+            </button>
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-3">
+          <div>
+            <label for="ttl-input-data" class="block text-xs font-medium text-zinc-400 mb-1.5">Input Data TTL</label>
+            <textarea id="ttl-input-data" rows="6" class="w-full bg-[#080b10] border border-zinc-800 rounded-xl px-3 py-2.5 text-sm text-zinc-100 placeholder-zinc-600 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/30 transition-colors" placeholder="Tempel data tempat tanggal lahir di sini..."></textarea>
+          </div>
+        </div>
+
+        <div class="pt-2 mt-auto">
+          <button type="button" id="btn-copy-ttl" class="w-full h-11 inline-flex items-center justify-center gap-2 rounded-xl bg-cyan-600 hover:bg-cyan-500 active:scale-[0.99] text-white text-sm font-medium transition-colors shadow-sm">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="14" height="14" x="8" y="8" rx="2"/>
+              <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+            </svg>
+            <span>Salin Prompt TTL</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="bg-[#0d1117]/95 border border-zinc-800/90 rounded-2xl p-4 sm:p-5 flex flex-col gap-4 shadow-[0_8px_30px_rgba(0,0,0,0.16)]">
+        <div class="flex items-center justify-between gap-3 border-b border-zinc-800/80 pb-3">
+          <div class="flex items-center gap-2.5 min-w-0">
+            <span class="flex items-center justify-center w-7 h-7 shrink-0 rounded-lg bg-cyan-500/10 text-cyan-400 font-semibold text-xs border border-cyan-500/20">03</span>
+            <h2 class="text-lg font-semibold text-white tracking-wide">ALAMAT</h2>
+          </div>
+
+          <div class="flex items-center gap-2 shrink-0">
+            <span class="text-xs px-2 py-0.5 rounded bg-zinc-800/80 text-zinc-400 font-mono">
+              Format Koma & Romawi
+            </span>
+            <button type="button" data-reset-target="alamat-input-data" class="reset-btn h-7 px-2.5 inline-flex items-center justify-center gap-1.5 rounded-lg border border-zinc-700 bg-zinc-800 text-zinc-400 hover:border-cyan-500/40 hover:text-cyan-400 active:scale-[0.98] transition-colors text-xs font-medium">
+              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 12a9 9 0 1 0 3-6.7"/>
+                <path d="M3 4v5h5"/>
+              </svg>
+              Reset
+            </button>
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-3">
+          <div>
+            <label for="alamat-input-data" class="block text-xs font-medium text-zinc-400 mb-1.5">Input Data Alamat</label>
+            <textarea id="alamat-input-data" rows="6" class="w-full bg-[#080b10] border border-zinc-800 rounded-xl px-3 py-2.5 text-sm text-zinc-100 placeholder-zinc-600 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/30 transition-colors" placeholder="Tempel data alamat di sini..."></textarea>
+          </div>
+        </div>
+
+        <div class="pt-2 mt-auto">
+          <button type="button" id="btn-copy-alamat" class="w-full h-11 inline-flex items-center justify-center gap-2 rounded-xl bg-cyan-600 hover:bg-cyan-500 active:scale-[0.99] text-white text-sm font-medium transition-colors shadow-sm">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="14" height="14" x="8" y="8" rx="2"/>
+              <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+            </svg>
+            <span>Salin Prompt ALAMAT</span>
+          </button>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="mt-7 sm:mt-8 pt-4 border-t border-zinc-800/80 text-center text-xs text-zinc-600">
+      Prompt Excel Kartu Osis Pak Djum &bull; Standarisasi Teks Otomatis
+    </footer>
+  </div>
+
+  <div id="toast" class="fixed bottom-5 left-1/2 -translate-x-1/2 bg-[#111820] border border-cyan-500/20 text-zinc-100 px-4 py-2.5 rounded-xl shadow-lg flex items-center gap-2.5 opacity-0 translate-y-3 pointer-events-none transition-all duration-200 z-50">
+    <span class="flex items-center justify-center w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-400">
+      <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="20 6 9 17 4 12"></polyline>
+      </svg>
+    </span>
+    <span id="toast-text" class="text-xs sm:text-sm font-medium"></span>
+  </div>
+
+  <script>
+    (function () {
+      const toast = document.getElementById('toast');
+      const toastText = document.getElementById('toast-text');
+      let toastTimer = null;
+
+      function showToast(message) {
+        if (toastTimer) {
+          clearTimeout(toastTimer);
+        }
+
+        toastText.textContent = message;
+
+        toast.classList.remove('opacity-0', 'translate-y-3', 'pointer-events-none');
+        toast.classList.add('opacity-100', 'translate-y-0');
+
+        toastTimer = setTimeout(() => {
+          toast.classList.remove('opacity-100', 'translate-y-0');
+          toast.classList.add('opacity-0', 'translate-y-3', 'pointer-events-none');
+        }, 2200);
+      }
+
+      async function copyText(text, successMessage) {
+        try {
+          if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(text);
+          } else {
+            const tempArea = document.createElement('textarea');
+            tempArea.value = text;
+            tempArea.style.position = 'fixed';
+            tempArea.style.left = '-9999px';
+            tempArea.style.top = '-9999px';
+            document.body.appendChild(tempArea);
+            tempArea.focus();
+            tempArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempArea);
+          }
+
+          showToast(successMessage);
+        } catch (err) {
+          showToast('Gagal menyalin teks');
+        }
+      }
+
+      function createButtonFeedback(btn) {
+        const originalContent = btn.innerHTML;
+
+        btn.innerHTML = `
+          <svg class="w-4 h-4 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          <span class="text-emerald-400">Tersalin!</span>
+        `;
+
+        btn.classList.add('bg-zinc-800', 'border', 'border-emerald-500/40');
+        btn.classList.remove('bg-cyan-600', 'hover:bg-cyan-500');
+
+        setTimeout(() => {
+          btn.innerHTML = originalContent;
+          btn.classList.remove('bg-zinc-800', 'border', 'border-emerald-500/40');
+          btn.classList.add('bg-cyan-600', 'hover:bg-cyan-500');
+        }, 1500);
+      }
+
+      function resetInput(targetId) {
+        const target = document.getElementById(targetId);
+        if (!target) return;
+
+        target.value = '';
+        target.focus();
+
+        const labels = {
+          'nama-input-data': 'Data NAMA berhasil direset!',
+          'ttl-input-data': 'Data TTL berhasil direset!',
+          'alamat-input-data': 'Data ALAMAT berhasil direset!'
+        };
+
+        showToast(labels[targetId] || 'Data berhasil direset');
+      }
+
+      document.querySelectorAll('.reset-btn').forEach((button) => {
+        button.addEventListener('click', function () {
+          resetInput(this.dataset.resetTarget);
+        });
+      });
+
+      const btnNama = document.getElementById('btn-copy-nama');
+
+      btnNama.addEventListener('click', function () {
+        const data = document.getElementById('nama-input-data').value.trim();
+
+        const prompt = `revisi data ini menjadi setiap baris, dan buatkan UPPERCASE, contoh:
+
+original : Aisyah Nuraini
+hasil : AISYAH NURAINI
+
+BERIKAN HASILNYA MENJADI CODETEXT (AGAR 1X KLIK COPY)
+
+Berikut Data Yang Saya Lampirkan:
+${data}`;
+
+        copyText(prompt, 'Prompt NAMA berhasil disalin!');
+        createButtonFeedback(btnNama);
+      }, { passive: true });
+
+      const btnTtl = document.getElementById('btn-copy-ttl');
+
+      btnTtl.addEventListener('click', function () {
+        const data = document.getElementById('ttl-input-data').value.trim();
+
+        const prompt = `revisi data ini menjadi setiap baris, dan buatkan Capitalise Case, contoh:
+original : SURAKARTA \t2012-08-11
+hasil : Surakarta, 11 Agustus 2012
+
+BERIKAN HASILNYA MENJADI CODETEXT (AGAR 1X KLIK COPY)
+
+Berikut Data Yang Saya Lampirkan:
+${data}`;
+
+        copyText(prompt, 'Prompt TTL berhasil disalin!');
+        createButtonFeedback(btnTtl);
+      }, { passive: true });
+
+      const btnAlamat = document.getElementById('btn-copy-alamat');
+
+      btnAlamat.addEventListener('click', function () {
+        const data = document.getElementById('alamat-input-data').value.trim();
+
+        const prompt = `revisi data ini menjadi setiap baris, dipisahkan dengan koma, jangan gunakan kata kunci "Desa, Kel., Kec.", dan buatkan Capitalise Case (tetapi jika ada angka romawi dengan contoh III, VII dst, maka jangan dirubah), contoh:
+original : bulak indah XII\t6\t7\tkarangasem\tDesa/Kel karangasem\t Kec. Laweyan
+hasil : Bulak Indah XII, RT 6 RW 7, Karangasen, Karangasem, Laweyan
+
+BERIKAN HASILNYA MENJADI CODETEXT (AGAR 1X KLIK COPY)
+
+Berikut Data Yang Saya Lampirkan:
+${data}`;
+
+        copyText(prompt, 'Prompt ALAMAT berhasil disalin!');
+        createButtonFeedback(btnAlamat);
+      }, { passive: true });
+    })();
+  </script>
+</body>
+</html>
